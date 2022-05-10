@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+<head>
+    <title>Магазин Чая</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <!-- Индикаторы -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block vw-100 vh-100" th:src="@{/img/first.jpg}">
+                <div class="carousel-caption d-flex h-100 align-items-center justify-content-center">
+                    <a href="/stocks" style="font-size: 180%; text-decoration: none; color: white">
+                        ПРИ ЗАКАЗЕ 2 И БОЛЕЕ ВИДОВ ЧАЯ СКИДКА 5%</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block vw-100 vh-100 " th:src="@{/img/second.jpg}">
+                <div class="carousel-caption d-flex h-100 align-items-center justify-content-center ">
+                    <a href="/stocks" style="font-size: 180%; text-decoration: none; color: white">
+                        БЕСПЛАТНАЯ ДОСТАВКА ПРИ ЗАКАЗЕ ОТ 6000 РУБЛЕЙ</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block vw-100 vh-100 " th:src="@{/img/third.jpg}">
+                <div class="carousel-caption d-flex h-100 align-items-center justify-content-center">
+                    <a href="/stocks" style="font-size: 180%; text-decoration: none; color: white">
+                        СКИДКА 10% ПРИ ЗАКАЗЕ ОТ 6 И БОЛЕЕ ТОВАРОВ</a>
+                </div>
+            </div>
+        </div>
+        <!-- Элементы управления -->
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Предыдущий</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+            <span class="sr-only">Следующий</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+
+
+    <div class="flex-container1 home_table">
+        <a href="/shop/oolong"><img th:src="@{/img/caramel.jpeg}" class="home-img"></a>
+        <a href="/shop/puerh"><img th:src="@{/img/classic.jpeg}" class="home-img"></a>
+        <a href="/shop/black"><img th:src="@{/img/mei.jpeg}" class="home-img"></a>
+        <a href="/shop/green"><img th:src="@{/img/gekuro.jpeg}" class="home-img"></a>
+    </div>
+
+
+    <div th:insert="blocks/footer :: footer"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

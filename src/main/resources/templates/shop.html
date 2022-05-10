@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ru">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+<head>
+    <title>Магазин Чая</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+
+<body>
+    <header th:insert="blocks/header :: header"></header>
+
+    <div class="flex-container2" style= "height: 100%">
+        <div style="min-width: 30%; height: 600px; display: flex; justify-content: center; align-items: center">
+            <div style="display: flex; flex-direction: column ;">
+                <a class="nav-link" style="color: black; font-size: 25px;" href="/shop/oolong">Оолонг</a>
+                <a class="nav-link" style="color: black; font-size: 25px;" href="/shop/puerh">Пуэр</a>
+                <a class="nav-link" style="color: black; font-size: 25px;" href="/shop/black">Черный</a>
+                <a class="nav-link" style="color: black; font-size: 25px;" href="/shop/green">Зеленый</a>
+            </div>
+        </div>
+        <div class="flex-container3">
+            <form action="#" th:each="tea : ${tea}" method="post" style="text-align: center; background: cadetblue;
+                margin: 10px; padding: 5px; height: 480px;">
+                <table>
+                    <tr>
+                        <td>
+                            <a th:href="@{'/shop/'+${tea.sort}+'/get/'+${tea.name}}">
+                                <img th:src="*{tea.image}" class="shop-img">
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <h3 th:text="*{tea.name}"></h3>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>
+                                <span th:text="*{tea.price}"></span> &#8381; / <span th:text="*{tea.weight}"></span> г
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr th:switch="${tea.quantity}">
+                        <td th:case="0"><h4 style="color: #b80000; margin-top: 20px">Нет товара</h4></td>
+                        <td th:case="*">
+                            <a th:href="@{'/shop/'+${tea.sort}+'/add/'+${tea.name}}" class="button">
+                                Купить
+                            </a>
+                        </td>
+                    </tr>
+                    <div th:if="${product == tea.name}">
+                        <tr th:if="${purchase}">
+                            <td><h6>ДОБАВЛЕН В КОРЗИНУ</h6></td>
+                        </tr>
+                    </div>
+                </table>
+            </form>
+
+
+        </div>
+    </div>
+
+    <div th:insert="blocks/footer :: footer"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
